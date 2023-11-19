@@ -1,8 +1,8 @@
-import { Logger } from './infrastructure/logger/Logger'
-import { AppExpress } from './presentation/application/AppExpress'
-import { AppRouter } from './presentation/application/AppRouter'
-import { SocketHandler } from './presentation/application/SocketHandler'
-import AppConfig from './config'
+import AppConfig from './config/index.js'
+import { Logger } from './infrastructure/logger/Logger.js'
+import { AppExpress } from './presentation/application/AppExpress.js'
+import { AppRouter } from './presentation/application/AppRouter.js'
+import { SocketHandler } from './presentation/application/SocketHandler.js'
 
 async function startServer(): Promise<void> {
   try {

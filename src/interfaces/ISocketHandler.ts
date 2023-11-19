@@ -1,6 +1,6 @@
-import { type Server as httpServer } from 'http'
+import { type Server } from 'http'
 
 export interface ISocketHandler {
-  httpServer: httpServer
+  httpServer: Server
   port: number
 }

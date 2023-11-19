@@ -1,7 +1,7 @@
 import express, { json, urlencoded, type Express } from 'express'
 import { type IncomingMessage, type Server, type ServerResponse } from 'http'
 import { type IAppExpressOptions } from '../../interfaces/IAppExpressOptions.js'
-import errorHandler from '../middlewares/errorHandler'
+import errorHandler from '../middlewares/errorHandler.js'
 
 export class AppExpress {
   private readonly port

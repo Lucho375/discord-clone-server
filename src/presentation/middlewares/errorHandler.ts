@@ -1,6 +1,6 @@
 import { type NextFunction, type Request, type Response } from 'express'
-import { Logger } from 'infrastructure/logger/Logger'
-import { CustomError } from 'presentation/error/CustomError'
+import { Logger } from '../../infrastructure/logger/Logger.js'
+import { CustomError } from '../../presentation/error/CustomError.js'
 
 export default async function errorHandler(
   err: Error,

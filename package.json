@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "jest --watchAll",
     "dev": "nodemon  ./src/index",
-    "build": "tsc"
+    "build": "tsc",
+    "start": "node ./dist/index"
   },
   "keywords": [],
   "author": "Luciano Rodríguez",

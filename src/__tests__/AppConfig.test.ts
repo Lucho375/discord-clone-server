@@ -1,6 +1,6 @@
 import fsp from 'fs/promises'
 import path from 'path'
-import AppConfig from '../config'
+import AppConfig from '../config/index.js'
 
 const envTestPath = path.resolve('src', '__tests__', '.env')
 const SERVER_PORT = 8080

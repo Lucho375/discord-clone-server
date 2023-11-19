@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { AppExpress } from '../presentation/application/AppExpress'
+import { AppExpress } from '../presentation/application/AppExpress.js'
 import { type AddressInfo } from 'net'
 
 const port = 8080

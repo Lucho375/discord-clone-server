@@ -18,7 +18,7 @@ export class SocketHandler {
   }
 
   private handleSocketConnection(socket: Socket): void {
-    socket.on('message', data => {
+    socket.on('message', (data: any) => {
       console.log(data)
       this.io.emit('message', 'message from server')
     })
