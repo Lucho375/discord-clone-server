@@ -18,24 +18,17 @@ export class SocketHandler {
   }
 
   private handleSocketConnection(socket: Socket): void {
-    socket.on('message', (data: any) => {
-      console.log(data)
+    socket.on('message', (message: string) => {
+      console.log(message)
       this.io.emit('message', 'message from server')
     })
-    socket.on('nuevo', () => {
-      console.log('nuevo')
-    })
-
-    // const eventHandlers: Record<string, (data: any) => void> = {
-    //   create_room: room => this.roomManager.create(socket, room),
-    //   join_room: room => this.roomManager.join(socket, room),
-    // }
-    // for (const eventName in eventHandlers) {
-    //   socket.on(eventName, eventHandlers[eventName])
-    // }
   }
 
   public listen(): void {
     this.io.listen(this.port)
+  }
+
+  public close(): void {
+    this.io.close()
   }
 }
