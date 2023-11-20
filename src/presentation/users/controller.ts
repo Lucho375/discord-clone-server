@@ -1,50 +1,52 @@
-import { type UserRepository } from '../../domain/users/userRepository.js'
 import { type NextFunction, type Request, type Response } from 'express'
+import { RegisterUserDto } from '../../domain/dtos/RegisterUserDto.js'
+import { type UserRepository } from '../../domain/repositories/user.repository.js'
 
 export class UserController {
   constructor(private readonly userRepository: UserRepository) {}
 
-  async getAll(_req: Request, res: Response, next: NextFunction): Promise<void> {
+  getAll = async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-      const users = this.userRepository.getAll()
+      const users = await this.userRepository.getAll()
       res.status(200).send({ payload: users })
     } catch (error) {
       next(error)
     }
   }
 
-  async getOne(_req: Request, res: Response, next: NextFunction): Promise<void> {
+  getOne = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-      const user = this.userRepository.getOne(_req.body.id)
+      const user = await this.userRepository.getOne(req.params.id)
       res.send({ payload: user })
     } catch (error) {
       next(error)
     }
   }
 
-  async createOne(req: Request, res: Response, next: NextFunction): Promise<void> {
+  createOne = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-      const data = req.body
-      const createdUser = this.userRepository.createOne(data)
+      const registerDto = RegisterUserDto.create(req.body)
+      const createdUser = await this.userRepository.createOne(registerDto)
       res.send({ payload: createdUser })
     } catch (error) {
       next(error)
     }
   }
 
-  async updateOne(_req: Request, res: Response, next: NextFunction): Promise<void> {
+  updateOne = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-      res.send('ok')
-      return this.userRepository.getAll()
+      const update = req.body
+      const updatedUser = await this.userRepository.updateOne(req.params.id, update)
+      res.send({ payload: updatedUser })
     } catch (error) {
       next(error)
     }
   }
 
-  async deleteOne(_req: Request, res: Response, next: NextFunction): Promise<void> {
+  deleteOne = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-      res.send('ok')
-      return this.userRepository.getAll()
+      const deletedUser = this.userRepository.deleteOne(req.params.id)
+      res.send({ payload: deletedUser })
     } catch (error) {
       next(error)
     }
