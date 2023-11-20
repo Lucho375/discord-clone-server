@@ -1,12 +1,11 @@
-import { type Request, type Response, Router } from 'express'
+import { Router } from 'express'
+import { UserRouter } from '../users/UserRouter.js'
 
 export class AppRouter {
   static get routes(): Router {
     const router = Router()
 
-    router.get('/', (_req: Request, res: Response, _next) => {
-      res.status(200).send('AppRoutes working')
-    })
+    router.use('/api/users', UserRouter.routes)
 
     return router
   }
