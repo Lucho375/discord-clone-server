@@ -31,6 +31,18 @@ class AppConfig {
     if (isNaN(Number(port))) throw new Error("Invalid 'SOCKET_PORT' environment variable")
     return Number(port)
   }
+
+  public getDatabaseUri(): string {
+    const uri = process.env.DB_URI
+    if (uri === undefined) throw new Error("Missing 'DB_URI' environment variable")
+    return uri
+  }
+
+  public getJwtSecret(): string {
+    const secret = process.env.JWT_SECRET
+    if (secret === undefined) throw new Error("Missing 'JWT_SECRET' environment variable")
+    return secret
+  }
 }
 
 export default AppConfig
