@@ -7,7 +7,7 @@ export class AppExpress {
   private readonly port
   private readonly routes
   private readonly app: Express
-  private serverListener: Server<typeof IncomingMessage, typeof ServerResponse> | undefined = undefined
+  private serverListener!: Server<typeof IncomingMessage, typeof ServerResponse>
 
   constructor({ port, routes }: IAppExpressOptions) {
     this.port = port
@@ -31,7 +31,7 @@ export class AppExpress {
     this.app.use(errorHandler)
   }
 
-  public getListener(): Server<typeof IncomingMessage, typeof ServerResponse> | undefined {
+  public getListener(): Server<typeof IncomingMessage, typeof ServerResponse> {
     return this.serverListener
   }
 
@@ -47,6 +47,5 @@ export class AppExpress {
 
   public close(): void {
     this.serverListener?.close()
-    this.serverListener = undefined
   }
 }
