@@ -1,19 +1,15 @@
 import { Router } from 'express'
-// import { UserController } from './controller' // eslint-disable-line
+import { MongooseUserDatasource } from '../../infrastructure/datasources/mongo-user.datasource.js'
+import { UserRepositoryImpl } from '../../infrastructure/repositories/user.repository.impl.js'
+import { UserController } from './controller.js' // eslint-disable-line
 
 export class UserRouter {
   static get routes(): Router {
     const router = Router()
 
-    // const controller = new UserController()
-
-    const controller = {
-      createOne: () => {},
-      getAll: () => {},
-      getOne: () => {},
-      updateOne: () => {},
-      deleteOne: () => {}
-    }
+    const datasource = new MongooseUserDatasource()
+    const repository = new UserRepositoryImpl(datasource)
+    const controller = new UserController(repository)
 
     // prettier-ignore
     router
