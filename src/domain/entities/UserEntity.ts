@@ -2,10 +2,10 @@ interface IUserEntity {
   id: string
   userName: string
   displayName: string
-  password: string
   email: string
   updatedAt: Date
   createdAt: Date
+  dateBirth: Date
 }
 
 export class UserEntity {
@@ -13,16 +13,16 @@ export class UserEntity {
   public createdAt: Date
   public displayName: string
   public email: string
-  public password: string
   public updatedAt: Date
   public userName: string
+  public dateBirth: Date
 
-  constructor({ id, createdAt, displayName, email, password, updatedAt, userName }: IUserEntity) {
+  constructor({ id, createdAt, dateBirth, displayName, email, updatedAt, userName }: IUserEntity) {
     this.id = id
     this.createdAt = createdAt
+    this.dateBirth = dateBirth
     this.displayName = displayName
     this.email = email
-    this.password = password
     this.updatedAt = updatedAt
     this.userName = userName
   }
