@@ -40,7 +40,7 @@ export class RegisterUserDto {
         dateBirth: z.date(),
         displayName: z.string(),
         email: z.string().email(),
-        password: z.string(),
+        password: z.string().min(8),
         userName: z.string()
       })
       .parse(registerUserData)
